@@ -33,35 +33,6 @@ body {
   color: #FFF;
   font-size: 12px;
 }
-.te {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  -ms-box-sizing: border-box;
-  box-sizing: border-box;
-  height: 31px;
-  width: 300px;
-  border-radius: 3px;
-}
-.te.editing {
-  background: rgba(85, 85, 85, 0.2);
-  z-index: 1;
-}
-.te.ui-state-disabled {
-  opacity: 1;
-}
-.clip {
-  position: absolute;
-  top: 0;
-  height: 30px;
-  left: 20px;
-  width: 100px;
-  background: #FFF;
-  border: 1px solid #cccccc;
-}
-.editing .clip {
-  border-color: #3fb58e;
-  box-shadow: 0 0 10px 1px #3fb58e;
-}
 .clip-duration {
   position: relative;
   height: 28px;

@@ -4,18 +4,6 @@ require([
   "jquery.beacon"
 ], function( $ ) {
   $(function() {
-    var te1 = document.getElementById( "te1" ),
-        $te = $( ".te" ),
-        isDragging;
-
-    $te.draggable({
-      handle: ".clip",
-      axis: "x",
-      start: function() {
-        isDragging = true;
-        console.log( isDragging );
-      }
-    });
 
     function toHHMMSS( n ) {
         n = parseInt( n );
@@ -44,22 +32,6 @@ require([
       }
       return f;
     }
-
-    function onMouseUp( e ) {
-      if ( isDragging ) {
-        isDragging = false;
-        console.log( isDragging );
-        return;
-      }
-      $( te1 ).draggable( "disable" );
-      te1.classList.add( "editing" );
-      te1.removeEventListener( "mouseup", onMouseUp, false );
-      $( ".clip", te1 ).resizable({handles: "e, w"}).draggable({axis: "x"});
-      document.addEventListener( "click", turnOffEditing( te1 ), false );
-    }
-
-    te1.addEventListener( "mouseup", onMouseUp, false );
-
 
     var $eHandle,
         $wHandle,
@@ -109,5 +81,6 @@ require([
     });
 
     $( ".proto-note" ).slideDown( "medium" );
+
   });
 });

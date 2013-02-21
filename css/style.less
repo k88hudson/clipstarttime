@@ -73,34 +73,6 @@ body {
   font-size: 12px;
 }
 
-.te {
-  .box-sizing( border-box );
-  height: 31px;
-  width: 300px;
-  border-radius: 3px;
-  &.editing {
-    background: fade( @darkgrey, 20% );
-    z-index: 1;
-  }
-  &.ui-state-disabled {
-    opacity: 1;
-  }
-}
-
-.clip {
-  position: absolute;
-  top: 0;
-  height: 30px;
-  left: 20px;
-  width: 100px;
-  background: #FFF;
-  border: 1px solid @lightgrey;
-  .editing & {
-    border-color: @green;
-    box-shadow: 0 0 10px 1px @green;
-  }
-}
-
 .clip-duration {
   position: relative;
   height: 28px;
