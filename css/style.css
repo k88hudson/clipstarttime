@@ -2,10 +2,9 @@
 * Base
 */
 body {
-  width: 960px;
-  margin: 30px auto;
   font-family: "Open sans", "Helvetica Neue", sans-serif;
   font-size: 100%;
+  overflow: hidden;
 }
 /*********************************************************
 * Track Events
