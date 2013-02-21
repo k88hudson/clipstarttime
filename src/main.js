@@ -17,14 +17,14 @@ require([
       }
     });
 
-    String.prototype.toHHMMSS = function () {
-        sec_numb    = parseInt(this);
-        var hours   = Math.floor(sec_numb / 3600);
-        var minutes = Math.floor((sec_numb - (hours * 3600)) / 60);
-        var seconds = sec_numb - (hours * 3600) - (minutes * 60);
+    function toHHMMSS( n ) {
+        n = parseInt( n );
+        var hours = Math.floor( n / 3600);
+        var minutes = Math.floor(( n - (hours * 3600)) / 60);
+        var seconds =  n - (hours * 3600) - (minutes * 60);
 
-        if ( minutes < 10 && hours ) {minutes = "0"+ minutes;}
-        if ( seconds < 10 ) {seconds = "0" + seconds;}
+        if ( minutes < 10 && hours ) { minutes = "0"+ minutes; }
+        if ( seconds < 10 ) { seconds = "0" + seconds; }
         var time = ( hours > 0 && ( hours +':' ) || "" ) + minutes + ':' + seconds;
         return time;
     }
@@ -99,8 +99,8 @@ require([
 
       },
       resize: function( e, ui ) {
-        $( ".tooltip-content", $startTooltip ).html( (ui.position.left + "" ).toHHMMSS() );
-        $( ".tooltip-content", $endTooltip ).html( (ui.size.width + ui.position.left + "").toHHMMSS() );
+        $( ".tooltip-content", $startTooltip ).html( toHHMMSS( ui.position.left ) );
+        $( ".tooltip-content", $endTooltip ).html( toHHMMSS( ui.size.width + ui.position.left ) );
         $trayTe.css( "width", ui.size.width + "px" );
       },
       stop: function( e, ui ) {
