@@ -69,7 +69,7 @@ require([
         $tooltips = [ $startTooltip, $endTooltip ],
         $trayTe = $( "#te-eg" );
 
-    $trayTe.css( "width", $( ".clip-section" ).width() + "px" );
+    $trayTe.css( "width", $( ".clip-section" ).width() + "px" ).removeClass( "hide" );
 
     $( ".clip-section" ).resizable({
       handles: "w, e",
