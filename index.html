@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Prototype</title>
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="//www.mozilla.org/tabzilla/media/css/tabzilla.css">
+  <link rel="stylesheet" href="src/jquery-ui.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="proto-note">
+    <p>Note: This is a test for editor ui for changing the sequencer clip start time.</p>
+    <p>Try playing with the "trim clip" slider.</p>
+  </div>
+
+  <div class="right-panel">
+    <h1 class="editor-title">Editor</h1>
+    <div class="inner-panel">
+      <label class="field-label">Trim clip</label>
+      <div class="clip-duration">
+        <label class="clip-start">0:00</label>
+        <label class="clip-end">5:10</label>
+        <div class="clip-section"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tray">
+    <div class="te-container hide">
+      <div id="te1" class="te media">
+          <div class="clip"></div>
+          <div class="tooltip">
+            Hello world
+            <span class="tooltip-tip"><span></span></span>
+          </div>
+      </div>
+    </div>
+    <div class="te-container">
+    </div>
+    <div class="te-container">
+      <div id="te-eg" class="media-te"><label class="te-title">Media track event</lable></div>
+    </div>
+  </div>
+
+  <script src="src/require-jquery.js" data-main="src/main.js"></script>
+</body>
+</html>
+

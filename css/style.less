@@ -1,0 +1,291 @@
+@lightblue: #E7EDF0;
+@green: #3FB58E;
+@red: #CB3E21;
+@yellow: #F3D310;
+
+@lightergrey: #F4F5F5;
+@lightgrey: #CCC;
+@grey: #D9DDDD;
+@darkgrey: #555;
+@darkestgrey: #3A3C3C;
+
+.transition(@props) {
+  -webkit-transition: @props;
+  -moz-transition: @props;
+  -o-transition: @props;
+  transition: @props;
+}
+.box-sizing( @property ) {
+  -webkit-box-sizing: @property;
+  -moz-box-sizing: @property;
+  -ms-box-sizing: @property;
+  box-sizing: @property;
+}
+.transform( @transformation ) {
+  -webkit-transform: @transformation;
+  -moz-transform: @transformation;
+  -o-transform: @transformation;
+  transform: @transformation;
+}
+.transform-origin( @transformation ) {
+  -webkit-transform-origin: @transformation;
+  -moz-transform-origin: @transformation;
+  -o-transform-origin: @transformation;
+  transform-origin: @transformation;
+}
+
+/*********************************************************
+* Base
+*/
+
+body {
+  width: 960px;
+    margin: 30px auto;
+  font-family: "Open sans", "Helvetica Neue", sans-serif;
+  font-size: 100%;
+}
+
+/*********************************************************
+* Track Events
+*/
+.te-container {
+  height: 30px;
+  width: 100%;
+  border-bottom: 1px dashed @grey;
+}
+
+.media-te {
+  position: relative;
+  height: 31px;
+  width: 300px;
+  left: 100px;
+  border-radius: 3px;
+  background: #555;
+  z-index: 1;
+}
+.te-title {
+  display: block;
+  height: 31px;
+  overflow: hidden;
+  word-wrap: none;
+  line-height: 31px;
+  margin-left: 15px;
+  color: #FFF;
+  font-size: 12px;
+}
+
+.te {
+  .box-sizing( border-box );
+  height: 31px;
+  width: 300px;
+  border-radius: 3px;
+  &.editing {
+    background: fade( @darkgrey, 20% );
+    z-index: 1;
+  }
+  &.ui-state-disabled {
+    opacity: 1;
+  }
+}
+
+.clip {
+  position: absolute;
+  top: 0;
+  height: 30px;
+  left: 20px;
+  width: 100px;
+  background: #FFF;
+  border: 1px solid @lightgrey;
+  .editing & {
+    border-color: @green;
+    box-shadow: 0 0 10px 1px @green;
+  }
+}
+
+.clip-duration {
+  position: relative;
+  height: 28px;
+  border-radius: 3px;
+  margin-bottom: 15px;
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    background: @darkgrey;
+    border-radius: 3px;
+  }
+  > label {
+    position: absolute;
+    top: 100%;
+    font-size: 10px;
+    font-family: menlo;
+    &.clip-end {
+      right: 0;
+    }
+  }
+}
+
+.clip-section {
+  position: relative;
+  top: 0;
+  height: 100%;
+  left: 28px;
+  width: 100px;
+  box-shadow: inset 0 0 0 2px @green;
+  background: fade( @green, 15% );
+}
+
+/*********************************************************
+* UI
+*/
+.hide {
+  display: none !important;
+}
+
+.ui-resizable-handle,
+.ui-resizable-w,
+.ui-resizable-e {
+  background: white;
+  border: 1px solid black;
+  height: 10px;
+  width: 3px;
+  top: 50%;
+  margin-top: -6px;
+}
+.ui-resizable-w {
+  left: -2px;
+}
+.ui-resizable-e {
+  right: -2px;
+}
+
+/*********************************************************
+* Editor
+*/
+
+.right-panel {
+  width: 350px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: @lightblue;
+  border-left: 1px solid @lightgrey;
+}
+
+.field-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+  line-height: 2;
+}
+
+.inner-panel{
+  padding: 20px;
+}
+
+.editor-title {
+  background: #FFF;
+  border-bottom: 1px solid @lightgrey;
+  margin: 0;
+  font-size: 14px;
+  line-height: 60px;
+  height: 60px;
+  padding-left: 20px;
+}
+
+/*********************************************************
+* Tray
+*/
+
+.tray {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 351px;
+  height: 150px;
+  border-top: 1px solid @lightgrey;
+}
+/*********************************************************
+* Prototype Utils
+*/
+.proto-note {
+  position: fixed;
+  top: 5px;
+  right: 355px;
+  padding: 0 1em;
+  .box-sizing( border-box );
+  background: @yellow;
+  font-family: menlo;
+  font-size: 12px;
+  width: 150px;
+  display: none;
+}
+/*********************************************************
+* Tooltip
+*/
+
+.tooltip {
+  @_w: 150px;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  margin-top: 5px;
+  margin-left: -@_w/2;
+  width: @_w;
+
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+
+  border: 1px solid @lightgrey;
+  background: #FFF;
+  box-shadow: 0 2px 6px -2px fade( #000, 15% );
+
+  .box-sizing( border-box );
+  padding: 10px;
+
+  opacity: 0;
+  visibility: hidden;
+  [data-tooltip]:hover &,
+  .tooltip-on & {
+    .transition( all 0.5s ease-out );
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &.top {
+    top: auto;
+    bottom: 100%;
+    margin-bottom: 5px;
+  }
+}
+
+.tooltip-tip {
+  @_s: 12px;
+  position: absolute;
+  display: block;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -@_s/2;
+  height: @_s;
+  width: @_s * 1.5;
+  overflow: hidden;
+  > span {
+    position: absolute;
+    display: block;
+    background: #FFF;
+    top: 50%;
+    left: 50%;
+    margin-left: -@_s/2;
+    height: @_s;
+    width: @_s;
+    .box-sizing( border-box );
+    border: 1px solid @lightgrey;
+    .transform( rotate( 45deg ) );
+  }
+}
